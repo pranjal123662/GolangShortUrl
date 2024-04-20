@@ -12,6 +12,6 @@ func Router() *mux.Router {
 	fmt.Println("Inside Router")
 	// router.HandleFunc("/", helper.ShowSomethingOnBrowser)
 	router.HandleFunc("/convertIntoshortUrl", helper.ConvertIntoShortUrl)
-	router.HandleFunc(`{api:[a-z]*}/shortUrl/{id:[0-9]*}`, helper.RedirectToOriginalUrl)
+	router.HandleFunc(`/shortUrl/{id:[0-9]*}`, helper.RedirectToOriginalUrl)
 	return router
 }
