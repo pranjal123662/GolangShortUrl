@@ -33,7 +33,7 @@ func ConvertIntoShortUrl(w http.ResponseWriter, r *http.Request) {
 	}
 	rand.Seed(time.Now().UnixNano())
 	id := strconv.Itoa(rand.Intn(100000))
-	receivedData.ShortUrl = "http://localhost:8999/shortUrl/" + id
+	receivedData.ShortUrl = "https://updateverse.com/shortUrl/" + id
 	res := controller.InsertIntoDataBase(receivedData)
 	if res != nil {
 		jsonData := JSONData{Code: "200", ShortUrl: receivedData.ShortUrl}
@@ -50,7 +50,7 @@ func RedirectToOriginalUrl(w http.ResponseWriter, r *http.Request) {
 	// w.Header().Set("Content-Type", "application/json")
 	// w.Header().Set("Access-Control-Allow-Origin", "*")
 	// w.Header().Set("Access-Control-Allow-Methods", "*")
-	res := controller.FetchDataFromDatabase("http://localhost:8999" + r.URL.String())
+	res := controller.FetchDataFromDatabase("https://updateverse.com" + r.URL.String())
 	if res == "" {
 		w.Write([]byte("<h1>Url not Found</h1>"))
 		return
